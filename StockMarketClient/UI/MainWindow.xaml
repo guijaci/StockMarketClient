@@ -30,9 +30,7 @@
                 <Grid Background="#FFE5E5E5">
                     <ListView Margin="10,10,10,35"/>
                     <Grid Margin="10,0,10,10" VerticalAlignment="Bottom" Height="20">
-                        <Button Content="Button" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="20"/>
-                        <Button Content="Button" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Margin="0,0,80,0" Height="20"/>
-                        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Height="20"/>
+                        <Button Content="Subscribe" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="20"/>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -42,8 +40,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Content="Welcome" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Height="26" VerticalAlignment="Center"/>
-            <Label x:Name="stockholderNameLabel" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Content="{Binding StockholderName, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}"/>
+            <Label Content="Welcome" HorizontalContentAlignment="Center" HorizontalAlignment="Right"/>
+            <Label x:Name="stockholderNameLabel" Grid.Column="1" HorizontalAlignment="Left" Content="{Binding StockholderName, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}" Height="26"/>
 
         </Grid>
 

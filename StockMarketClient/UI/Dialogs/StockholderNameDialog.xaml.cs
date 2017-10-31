@@ -24,11 +24,11 @@ namespace StockMarketClient.UI.Dialogs
             LoadMainWindow();
 
         private void StockholderNameTextBox_TextChanged(object sender, TextChangedEventArgs e) => 
-            okButton.IsEnabled = !string.IsNullOrEmpty(stockholderNameTextBox.Text);
+            okButton.IsEnabled = !string.IsNullOrWhiteSpace(stockholderNameTextBox.Text);
 
         private void LoadMainWindow()
         {
-            if (!string.IsNullOrEmpty(stockholderNameTextBox.Text))
+            if (!string.IsNullOrWhiteSpace(stockholderNameTextBox.Text))
             {
                 Stockholder stockholder = new Stockholder(stockholderNameTextBox.Text);
                 app.Stockholder = stockholder;

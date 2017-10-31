@@ -1,4 +1,6 @@
-﻿namespace StockMarketClient.Models.Builders
+﻿using StockMarketClient.Models;
+
+namespace StockMarketClient.Builders.Models
 {
     static class StocksBuilder
     {

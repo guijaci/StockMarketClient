@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace StockMarketClient.Models
 {
@@ -13,6 +9,7 @@ namespace StockMarketClient.Models
         private long _quantity = 0;
         private string _enterprise = "";
 
+        [JsonProperty(PropertyName = "version")]
         public long Version { get => _version; private set => _version = value; }
 
         public Stocks() { }
@@ -24,6 +21,7 @@ namespace StockMarketClient.Models
             _enterprise = enterprise;
         }
 
+        [JsonProperty(PropertyName = "price")]
         public double Price
         {
             get => _price;
@@ -34,6 +32,7 @@ namespace StockMarketClient.Models
             }
         }
 
+        [JsonProperty(PropertyName = "quantity")]
         public long Quantity
         {
             get => _quantity;
@@ -44,6 +43,7 @@ namespace StockMarketClient.Models
             }
         }
 
+        [JsonProperty(PropertyName = "enterprise")]
         public string Enterprise
         {
             get => _enterprise;

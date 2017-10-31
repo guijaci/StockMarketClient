@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace StockMarketClient.Models
 {
@@ -19,9 +16,13 @@ namespace StockMarketClient.Models
             Name = name;
         }
 
+        [JsonProperty(PropertyName = "version")]
         public long Version { get => _version; private set => _version = value; }
+
+        [JsonProperty(PropertyName = "id")]
         public Guid Id { get => _id; private set => _id = value; }
 
+        [JsonProperty(PropertyName = "name")]
         public string Name
         {
             get => _name;

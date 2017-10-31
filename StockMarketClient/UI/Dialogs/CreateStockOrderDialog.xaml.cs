@@ -1,18 +1,7 @@
 ﻿using StockMarketClient.Models;
-using StockMarketClient.Models.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using StockMarketClient.Builders.Models;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace StockMarketClient.UI.Dialogs
 {
@@ -28,20 +17,34 @@ namespace StockMarketClient.UI.Dialogs
                 .WithQuantity(quantitySpinner.Value ?? 1);
             set
             {
-                enterpriseTextBox.Text = value.Enterprise;
-                priceSpinner.Value = value.Price;
-                quantitySpinner.Value = value.Quantity;
+                enterpriseTextBox.Text = value?.Enterprise;
+                priceSpinner.Value = value?.Price;
+                quantitySpinner.Value = value?.Quantity;
             }
         }
+
+        private bool IsValid { get => !string.IsNullOrWhiteSpace(enterpriseTextBox.Text) && priceSpinner.Value >= 0.01 && quantitySpinner.Value > 0; }
 
         public CreateStockOrderDialog()
         {
             InitializeComponent();
+            priceSpinner.ValueChanged += PriceSpinner_ValueChanged;
+            quantitySpinner.ValueChanged += QuantitySpinner_ValueChanged;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = true;
-        }
+        private void OkButton_Click(object sender, RoutedEventArgs e) => 
+            DialogResult = true;
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e) => 
+            DialogResult = false;
+
+        private void EnterpriseTextBox_TextChanged(object sender, TextChangedEventArgs e) => 
+            okButton.IsEnabled = IsValid;
+
+        private void PriceSpinner_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e) => 
+            okButton.IsEnabled = IsValid;
+
+        private void QuantitySpinner_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e) => 
+            okButton.IsEnabled = IsValid;
     }
 }

@@ -1,21 +1,9 @@
-﻿using StockMarketClient.Models;
+﻿using StockMarketClient.Builders.Models;
+using StockMarketClient.Models;
 using StockMarketClient.UI.Dialogs;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace StockMarketClient.UI
 {
@@ -25,13 +13,39 @@ namespace StockMarketClient.UI
     public partial class MainWindow : Window
     {
         private App app = ((App)Application.Current);
-        private CreateStockOrderDialog createStockOrderDialog = new CreateStockOrderDialog();
+        private Stocks lastCreatedStocks = new Stocks()
+            .WithEnterprise("")
+            .WithPrice(1)
+            .WithQuantity(1);
 
         public string StockholderName { get => app.Stockholder?.Name; set => app.Stockholder.Name = value; }
         
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ShowCreateStockDialog(Action<Stocks> onSucces)
+        {
+            ShowCreateStockDialog(onSucces, () => { });
+        }
+
+
+        private void ShowCreateStockDialog(Action<Stocks> onSucces, Action onFailure)
+        {
+            CreateStockOrderDialog createStockOrderDialog = new CreateStockOrderDialog
+            {
+                Answer = lastCreatedStocks
+            };
+
+            if (createStockOrderDialog.ShowDialog() == true)
+            {
+                Stocks stocks = createStockOrderDialog.Answer;
+                lastCreatedStocks = stocks;
+                onSucces(stocks);
+            }
+            else
+                onFailure();
         }
 
         private void TestButton_Click(object sender, RoutedEventArgs e)
@@ -48,15 +62,26 @@ namespace StockMarketClient.UI
 
         private void BuyStocksButton_Click(object sender, RoutedEventArgs e)
         {
-            if(createStockOrderDialog.ShowDialog() == true)
+            ShowCreateStockDialog(stocks =>
             {
-                Stocks stocks = createStockOrderDialog.Answer;
-            }
+                StockOrder stockOrder = app.TransactionRoomService.AddBuyStockOrder( 
+                    new BuyStockOrder()
+                    .WithOrderPlacer(app.Stockholder)
+                    .WithStocks(stocks) as BuyStockOrder);
+                Console.WriteLine(string.Format("ID: {0}", stockOrder?.Id));
+            });
         }
 
         private void SellStocksButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ShowCreateStockDialog(stocks =>
+            {
+                StockOrder stockOrder = app.TransactionRoomService.AddSellStockOrder(
+                    new SellStockOrder()
+                    .WithOrderPlacer(app.Stockholder)
+                    .WithStocks(stocks) as SellStockOrder);
+                Console.WriteLine(string.Format("ID: {0}", stockOrder?.Id));
+            });
         }
     }
 }

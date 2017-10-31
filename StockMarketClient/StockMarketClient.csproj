@@ -98,11 +98,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\Builders\StocksBuilder.cs" />
+    <Compile Include="Builders\Models\StockOrderBuilder.cs" />
+    <Compile Include="Builders\Models\StocksBuilder.cs" />
+    <Compile Include="Builders\Services\StockMarketBuilder.cs" />
+    <Compile Include="Builders\Services\TransactionRoomBuilder.cs" />
+    <Compile Include="Models\BuyStockOrder.cs" />
+    <Compile Include="Models\SellStockOrder.cs" />
+    <Compile Include="Models\StockOrder.cs" />
     <Compile Include="Models\Stocks.cs" />
     <Compile Include="Models\Stockholder.cs" />
-    <Compile Include="Services\DefaultTransactionRoom.cs" />
-    <Compile Include="Services\StockMarketFacade.cs" />
+    <Compile Include="Services\TransactionRoomFacade.cs" />
+    <Compile Include="Services\StockMarketService.cs" />
+    <Compile Include="Services\WebService.cs" />
     <Compile Include="TestWrapper.cs" />
     <Compile Include="UI\Dialogs\StockholderNameDialog.xaml.cs">
       <DependentUpon>StockholderNameDialog.xaml</DependentUpon>
