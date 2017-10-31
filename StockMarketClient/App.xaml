@@ -1,0 +1,9 @@
+﻿<Application x:Class="StockMarketClient.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:StockMarketClient"
+             StartupUri="UI/Dialogs/StockholderNameDialog.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
