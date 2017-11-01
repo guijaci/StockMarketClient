@@ -83,5 +83,19 @@ namespace StockMarketClient.UI
                 Console.WriteLine(string.Format("ID: {0}", stockOrder?.Id));
             });
         }
+
+        private void SubscribeButton_Click(object sender, RoutedEventArgs e)
+        {
+            SubscribeDialog subscribeDialog = new SubscribeDialog();
+
+            if(subscribeDialog.ShowDialog() == true)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
     }
 }

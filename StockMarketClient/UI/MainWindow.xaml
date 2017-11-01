@@ -30,7 +30,7 @@
                 <Grid Background="#FFE5E5E5">
                     <ListView Margin="10,10,10,35"/>
                     <Grid Margin="10,0,10,10" VerticalAlignment="Bottom" Height="20">
-                        <Button Content="Subscribe" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="20"/>
+                        <Button x:Name="subscribeButton" Content="Subscribe" Click="SubscribeButton_Click" HorizontalAlignment="Right" Width="75" Height="20" VerticalAlignment="Bottom"/>
                     </Grid>
                 </Grid>
             </TabItem>
