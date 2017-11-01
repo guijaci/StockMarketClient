@@ -2,7 +2,7 @@
 
 namespace StockMarketClient.Models
 {
-    class Stocks
+    public class Stocks
     {
         private long _version = 0;
         private double _price = 0;

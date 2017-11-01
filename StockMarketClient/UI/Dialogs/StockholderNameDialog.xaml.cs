@@ -32,6 +32,7 @@ namespace StockMarketClient.UI.Dialogs
             {
                 Stockholder stockholder = new Stockholder(stockholderNameTextBox.Text);
                 app.Stockholder = stockholder;
+                app.StartEventPolling();
 
                 Dispatcher.BeginInvoke(new Action(() =>
                 {

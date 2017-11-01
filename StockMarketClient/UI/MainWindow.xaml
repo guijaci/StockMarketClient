@@ -10,13 +10,13 @@
     <Grid>
         <TabControl Margin="0,36,0,0">
             <TabItem Header="Orders">
-                <Grid Background="#FFE5E5E5">
-                    <DataGrid Margin="10,10,10,35" CanUserResizeColumns="True" CanUserReorderColumns="False" ColumnWidth="*" >
+                <Grid x:Name="orderTable" Background="#FFE5E5E5">
+                    <DataGrid Margin="10,10,10,35" IsReadOnly="True" AutoGenerateColumns="False" CanUserResizeRows="False" CanUserResizeColumns="True" CanUserReorderColumns="False" ColumnWidth="*" ItemsSource="{Binding OrderList, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="OrderColumn" Header="Order"/>
-                            <DataGridTextColumn x:Name="EnterpriseColumn" Header="Enterprise"/>
-                            <DataGridTextColumn x:Name="PriceColumn" Header="Price"/>
-                            <DataGridTextColumn x:Name="QuantityColumn" Header="Quantity"/>
+                            <DataGridTextColumn x:Name="OrderColumn" Header="Order" Binding="{Binding Path=Order}"/>
+                            <DataGridTextColumn x:Name="EnterpriseColumn" Header="Enterprise" Binding="{Binding Path=Enterprise}"/>
+                            <DataGridTextColumn x:Name="PriceColumn" Header="Price" Binding="{Binding Path=Price}"/>
+                            <DataGridTextColumn x:Name="QuantityColumn" Header="Quantity" Binding="{Binding Path=Quantity}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <Grid Margin="10,0,10,10" Height="20" VerticalAlignment="Bottom">
@@ -28,7 +28,7 @@
             </TabItem>
             <TabItem Header="Events">
                 <Grid Background="#FFE5E5E5">
-                    <ListView Margin="10,10,10,35"/>
+                    <ListView Margin="10,10,10,35" ItemsSource="{Binding EventList, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}"/>
                     <Grid Margin="10,0,10,10" VerticalAlignment="Bottom" Height="20">
                         <Button x:Name="subscribeButton" Content="Subscribe" Click="SubscribeButton_Click" HorizontalAlignment="Right" Width="75" Height="20" VerticalAlignment="Bottom"/>
                     </Grid>

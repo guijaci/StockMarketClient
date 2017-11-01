@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 
 namespace StockMarketClient
@@ -18,15 +19,21 @@ namespace StockMarketClient
     {
         private Stockholder _stockholder = null;
         private TransactionRoomFacade _transactionRoomService = null;
+        private const int POLL_RATE = 5000;
 
-        internal Stockholder Stockholder { get => _stockholder; set => _stockholder = value; }
-        internal TransactionRoomFacade TransactionRoomService { get => _transactionRoomService; set => _transactionRoomService = value; }
+        public Stockholder Stockholder { get => _stockholder; set => _stockholder = value; }
+        public TransactionRoomFacade TransactionRoomService { get => _transactionRoomService; set => _transactionRoomService = value; }
 
         public App()
         {
             TransactionRoomService = new TransactionRoomFacade()
+                .WithEventPollTimer(new Timer())
                 .WithStockMarketService(new StockMarketService()
                     .WithClientService(WebService.DefaultClient("http://localhost:8080")));
         }
+
+        public void StartEventPolling() => 
+            TransactionRoomService.SetupEventPolling(Stockholder, POLL_RATE);
+
     }
 }

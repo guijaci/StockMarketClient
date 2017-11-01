@@ -10,7 +10,7 @@ namespace StockMarketClient.UI.Dialogs
     /// </summary>
     public partial class CreateStockOrderDialog : Window
     {
-        internal Stocks Answer {
+        public Stocks Answer {
             get => new Stocks()
                 .WithEnterprise(enterpriseTextBox.Text)
                 .WithPrice(priceSpinner.Value ?? 0.01)

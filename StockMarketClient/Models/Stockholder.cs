@@ -3,7 +3,7 @@ using System;
 
 namespace StockMarketClient.Models
 {
-    class Stockholder
+    public class Stockholder
     {
         private long _version = 0;
         private string _name = "";
@@ -11,10 +11,7 @@ namespace StockMarketClient.Models
 
         public Stockholder() { }
 
-        public Stockholder(string name)
-        {
-            Name = name;
-        }
+        public Stockholder(string name) => Name = name;
 
         [JsonProperty(PropertyName = "version")]
         public long Version { get => _version; private set => _version = value; }

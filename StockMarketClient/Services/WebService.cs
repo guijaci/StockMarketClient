@@ -4,7 +4,7 @@ using System.Net.Http.Headers;
 
 namespace StockMarketClient.Services
 {
-    class WebService
+    public class WebService
     {
         protected string TestPostPath { get => "/post/test"; }
         protected string TestGetPath { get => "/get/test"; }

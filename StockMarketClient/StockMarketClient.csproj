@@ -104,9 +104,12 @@
     <Compile Include="Builders\Services\TransactionRoomBuilder.cs" />
     <Compile Include="Models\BuyStockOrder.cs" />
     <Compile Include="Models\SellStockOrder.cs" />
+    <Compile Include="Models\StockEvent.cs" />
     <Compile Include="Models\StockOrder.cs" />
     <Compile Include="Models\Stocks.cs" />
     <Compile Include="Models\Stockholder.cs" />
+    <Compile Include="Models\Util\StockOrderConverter.cs" />
+    <Compile Include="Models\Util\StockOrderSpecifiedConcreteClassConverter .cs" />
     <Compile Include="Services\TransactionRoomFacade.cs" />
     <Compile Include="Services\StockMarketService.cs" />
     <Compile Include="Services\WebService.cs" />

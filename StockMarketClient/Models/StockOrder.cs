@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
+using StockMarketClient.Models.Util;
 
 namespace StockMarketClient.Models
 {
-    abstract class StockOrder
+    [JsonConverter(typeof(StockOrderConverter))]
+    public abstract class StockOrder
     {
         private long _version = 0;
         private long? _id = null;
