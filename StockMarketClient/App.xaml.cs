@@ -1,12 +1,6 @@
 ﻿using StockMarketClient.Builders.Services;
 using StockMarketClient.Models;
 using StockMarketClient.Services;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 

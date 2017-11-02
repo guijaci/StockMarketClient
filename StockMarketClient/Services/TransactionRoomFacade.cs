@@ -1,8 +1,6 @@
 ﻿using StockMarketClient.Models;
 using System.Threading.Tasks;
-using System;
 using System.Timers;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace StockMarketClient.Services
@@ -32,7 +30,7 @@ namespace StockMarketClient.Services
 
         public void PollStockEvents(Stockholder subscriber)
         {
-            var request = Task.Run(async () => await StockMarketService.RetrieveEventsRequest(subscriber));
+            var request = Task.Run(() => PollStockEventsAsync(subscriber));
             request.Wait();
             List<StockEventArgs> events = request.Result;
             events.ForEach(s => {
@@ -54,8 +52,11 @@ namespace StockMarketClient.Services
             });
         }
 
+        public async Task<List<StockEventArgs>> PollStockEventsAsync(Stockholder subscriber) =>
+            await StockMarketService.RetrieveEventsRequest(subscriber);
+
         public BuyStockOrder AddBuyStockOrder(BuyStockOrder stockOrder) {
-            var request = Task.Run(async () => await StockMarketService.CreateBuyStockOrderRequest(stockOrder));
+            var request = Task.Run(() => AddBuyStockOrderAsync(stockOrder));
             request.Wait();
             return request.Result;
         }
@@ -65,12 +66,22 @@ namespace StockMarketClient.Services
 
         public SellStockOrder AddSellStockOrder(SellStockOrder stockOrder)
         {
-            var request = Task.Run(async () => await StockMarketService.CreateSellStockOrderRequest(stockOrder));
+            var request = Task.Run(() => AddSellStockOrderAsync(stockOrder));
             request.Wait();
             return request.Result;
         }
 
         public async Task<SellStockOrder> AddSellStockOrderAsync(SellStockOrder stockOrder) => 
             await StockMarketService.CreateSellStockOrderRequest(stockOrder);
+
+        public Stockholder StockEventsSubscribe(Stockholder subscriber, string enterprise, StockEventArgs.EStockEventType eventType, bool? isBuying = null, bool? isSelling = null)
+        {
+            var request = Task.Run(() => StockEventsSubscribeAsync(subscriber, enterprise, eventType, isBuying, isSelling));
+            request.Wait();
+            return request.Result;
+        }
+
+        public async Task<Stockholder> StockEventsSubscribeAsync(Stockholder subscriber, string enterprise, StockEventArgs.EStockEventType eventType, bool? isBuying = null, bool? isSelling = null) =>
+            await StockMarketService.StockEventsSubscribeRequest(subscriber, enterprise, eventType, isBuying, isSelling);
     }
 }

@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:StockMarketClient.UI.Dialogs"
         x:Class="StockMarketClient.UI.Dialogs.SubscribeDialog"
         mc:Ignorable="d"
-        Title="Subscribe to Events" Height="200" Width="260" MinWidth="260" MinHeight="200" MaxHeight="200" ResizeMode="CanResizeWithGrip">
+        Title="Subscribe to Events" Height="200" Width="350" MinWidth="260" MinHeight="200" MaxHeight="200" ResizeMode="CanResizeWithGrip" FocusManager.FocusedElement="{Binding ElementName=enterpriseTextBox}">
     <Window.Resources>
         <utils:EnumToBoolConverter x:Key="EnumToBoolConverter"/>
     </Window.Resources>
@@ -24,10 +24,10 @@
             <Label Content="Enterprise:" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Margin="10,5"/>
             <TextBox x:Name="enterpriseTextBox" Grid.Column="1" Margin="10,5" TextWrapping="Wrap" VerticalContentAlignment="Center" TextChanged="EnterpriseTextBox_TextChanged"/>
             <Label Content="Event Type:" Margin="10" Grid.Row="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-            <StackPanel Grid.Column="1" Margin="0,3,10,3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="71" Width="138" Grid.Row="1">
-                <RadioButton Content="Stocks Traded" Margin="5,0,10,5" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" GroupName="EventSelector" IsChecked="{Binding SelectedEvent, ConverterParameter=TRANSACTION, Converter={StaticResource EnumToBoolConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:SubscribeDialog}}}"/>
-                <RadioButton Content="Buy Stock Ordered" Margin="5,5,5,10" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" GroupName="EventSelector" IsChecked="{Binding SelectedEvent, ConverterParameter=ADDED_BUY, Converter={StaticResource EnumToBoolConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:SubscribeDialog}}}"/>
-                <RadioButton Content="Sell Stock Ordered" Margin="5,5,5,0" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" GroupName="EventSelector" IsChecked="{Binding SelectedEvent, ConverterParameter=ADDED_SELL, Converter={StaticResource EnumToBoolConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:SubscribeDialog}}}"/>
+            <StackPanel Grid.Column="1" Margin="10,5,0,5" HorizontalAlignment="Left" VerticalAlignment="Center" Width="138" Grid.Row="1">
+                <RadioButton Content="Stocks Traded" Margin="5,5,10,5" VerticalContentAlignment="Center" HorizontalAlignment="Left" GroupName="EventSelector" IsChecked="{Binding SelectedEvent, ConverterParameter=TRANSACTION, Converter={StaticResource EnumToBoolConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:SubscribeDialog}}}"/>
+                <RadioButton Content="Buy Stock Ordered" Margin="5,5,5,10" VerticalContentAlignment="Center" HorizontalAlignment="Left" GroupName="EventSelector" IsChecked="{Binding SelectedEvent, ConverterParameter=ADDED_BUY, Converter={StaticResource EnumToBoolConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:SubscribeDialog}}}"/>
+                <RadioButton Content="Sell Stock Ordered" Margin="5" VerticalContentAlignment="Center" HorizontalAlignment="Left" GroupName="EventSelector" IsChecked="{Binding SelectedEvent, ConverterParameter=ADDED_SELL, Converter={StaticResource EnumToBoolConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:SubscribeDialog}}}"/>
             </StackPanel>
         </Grid>
         <Grid Margin="10,0,10,10" Height="20" VerticalAlignment="Bottom">

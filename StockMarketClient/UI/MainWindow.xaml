@@ -20,7 +20,6 @@
                         </DataGrid.Columns>
                     </DataGrid>
                     <Grid Margin="10,0,10,10" Height="20" VerticalAlignment="Bottom">
-                        <Button x:Name="testButton" Content="Teste" Click="TestButton_Click" HorizontalContentAlignment="Center" Height="20" Width="75" HorizontalAlignment="Left"/>
                         <Button x:Name="sellStocksButton" Content="Sell Stocks" Margin="0,0,80,0" Height="20" Width="75" HorizontalAlignment="Right" Click="SellStocksButton_Click"/>
                         <Button x:Name="buyStocksButton" Content="Buy Stocks" Panel.ZIndex="38" Height="20" Width="75" HorizontalAlignment="Right" Click="BuyStocksButton_Click"/>
                     </Grid>

@@ -3,12 +3,9 @@ using StockMarketClient.Models;
 using StockMarketClient.UI.Dialogs;
 using System;
 using System.Linq;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
-using System.Windows.Data;
 
 namespace StockMarketClient.UI
 {
@@ -75,18 +72,6 @@ namespace StockMarketClient.UI
                 onFailure();
         }
 
-        private void TestButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Task.Run(TestWrapper.HttpTest).Wait();
-            }
-            catch(Exception ex)
-            {
-
-            }
-        }
-
         private void BuyStocksButton_Click(object sender, RoutedEventArgs e)
         {
             ShowCreateStockDialog(stocks =>
@@ -114,14 +99,25 @@ namespace StockMarketClient.UI
         private void SubscribeButton_Click(object sender, RoutedEventArgs e)
         {
             SubscribeDialog subscribeDialog = new SubscribeDialog();
-
             if(subscribeDialog.ShowDialog() == true)
             {
-
-            }
-            else
-            {
-
+                var options = subscribeDialog.Answer;
+                StockEventArgs.EStockEventType eventType;
+                switch (options.EventType)
+                {
+                    case SubscribeDialog.EEventType.TRANSACTION:
+                        eventType = StockEventArgs.EStockEventType.TRADED;
+                        app.TransactionRoomService.StockEventsSubscribe(app.Stockholder, options.Enterprise, eventType);
+                        break;
+                    case SubscribeDialog.EEventType.ADDED_BUY:
+                        eventType = StockEventArgs.EStockEventType.ADDED;
+                        app.TransactionRoomService.StockEventsSubscribe(app.Stockholder, options.Enterprise, eventType, true, null);
+                        break;
+                    case SubscribeDialog.EEventType.ADDED_SELL:
+                        eventType = StockEventArgs.EStockEventType.ADDED;
+                        app.TransactionRoomService.StockEventsSubscribe(app.Stockholder, options.Enterprise, eventType, null, true);
+                        break;
+                }
             }
         }
 

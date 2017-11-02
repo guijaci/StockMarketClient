@@ -16,6 +16,9 @@ namespace StockMarketClient.UI.Dialogs
             ADDED_SELL
         }
 
+        public SubscriptionOptions Answer => 
+            new SubscriptionOptions(enterpriseTextBox.Text, SelectedEvent);
+
         private EEventType _selectedEvent = EEventType.TRANSACTION;
 
         public EEventType SelectedEvent
@@ -37,5 +40,20 @@ namespace StockMarketClient.UI.Dialogs
 
         private void EnterpriseTextBox_TextChanged(object sender, TextChangedEventArgs e) => 
             okButton.IsEnabled = !string.IsNullOrWhiteSpace(enterpriseTextBox.Text);
+
+        public class SubscriptionOptions
+        {
+            private string _enterprise;
+            private EEventType _eventType;
+
+            public SubscriptionOptions(string enterprise, EEventType eventType)
+            {
+                Enterprise = enterprise;
+                EventType = eventType;
+            }
+
+            public string Enterprise { get => _enterprise; set => _enterprise = value; }
+            public EEventType EventType { get => _eventType; set => _eventType = value; }
+        }
     }
 }
