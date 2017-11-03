@@ -2,6 +2,9 @@
 
 namespace StockMarketClient.Models
 {
+    /// <summary>
+    /// Objeto representa ações no mercado de ações
+    /// </summary>
     public class Stocks
     {
         private long _version = 0;

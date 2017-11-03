@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace StockMarketClient.Models.Util
 {
+    /// <summary>
+    /// Objeto auxilia na serialização em JSON de classes concretas de <see cref="StockOrder"/>
+    /// </summary>
     class StockOrderSpecifiedConcreteClassConverter : DefaultContractResolver
     {
         protected override JsonConverter ResolveContractConverter(Type objectType)

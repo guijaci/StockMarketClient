@@ -3,6 +3,9 @@ using System;
 
 namespace StockMarketClient.Models
 {
+    /// <summary>
+    /// Objeto representa um acionista no mercado de ações
+    /// </summary>
     public class Stockholder
     {
         private long _version = 0;

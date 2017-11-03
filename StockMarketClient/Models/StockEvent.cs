@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace StockMarketClient.Models
 {
+    /// <summary>
+    /// Objeto encapsula informações sobre eventos relacionados à ações, ordems de operação sobre ações e suas transações no mercado de ações
+    /// </summary>
     public class StockEventArgs
     {
         public enum EStockEventType

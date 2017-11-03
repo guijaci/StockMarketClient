@@ -3,6 +3,9 @@ using StockMarketClient.Models.Util;
 
 namespace StockMarketClient.Models
 {
+    /// <summary>
+    /// Objeto representa uma ordem de operação sobre ações no mercado de ações
+    /// </summary>
     [JsonConverter(typeof(StockOrderConverter))]
     public abstract class StockOrder
     {

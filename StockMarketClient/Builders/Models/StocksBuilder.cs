@@ -2,6 +2,9 @@
 
 namespace StockMarketClient.Builders.Models
 {
+    /// <summary>
+    /// Classe extende <see cref="Stocks"/> para permitir construção encadeada de objeto
+    /// </summary>
     static class StocksBuilder
     {
         public static Stocks WithPrice(this Stocks stocks, double price)

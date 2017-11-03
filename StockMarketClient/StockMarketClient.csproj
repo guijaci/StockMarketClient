@@ -116,7 +116,6 @@
     <Compile Include="Models\Util\StockOrderSpecifiedConcreteClassConverter .cs" />
     <Compile Include="Services\TransactionRoomFacade.cs" />
     <Compile Include="Services\StockMarketService.cs" />
-    <Compile Include="Services\Utils\HttpExtensions.cs" />
     <Compile Include="Services\WebService.cs" />
     <Compile Include="UI\Dialogs\StockholderNameDialog.xaml.cs">
       <DependentUpon>StockholderNameDialog.xaml</DependentUpon>

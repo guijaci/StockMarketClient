@@ -4,6 +4,10 @@ using System.Windows.Data;
 
 namespace StockMarketClient.UI.Utils
 {
+    /// <summary>
+    /// Converte um enum para booleano e vice versa. 
+    /// Auxilia na conversão de valores da opção de eventos para seleção de tipos de eventos durante janela de diálogo de inscrição
+    /// </summary>
     public class EnumToBoolConverter : IValueConverter
     {
         public object Convert(object value, Type targetType,
